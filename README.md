@@ -1,1 +1,1 @@
-# barcode-generator
+Using : jQuery, Bootstrap

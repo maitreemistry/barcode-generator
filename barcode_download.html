@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="This page creates Barcode">
+    <title>Barcode Generation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+</head>
+
+<body style="background-image:url('bg.png'); background-color: rgb(215, 239, 250); padding:20px;">
+    <h1 style="font-family:Arial, Helvetica, sans-serif; font-size:50px; color:rgb(57, 55, 55)">MAITREE'S BARCODE GENERATOR</h1>
+    <label for="bar" style="font-family:Arial, Helvetica, sans-serif; font-size:25px; padding:20px;">Enter Number: </label>
+    <input type="number" name="bar" id="bar" placeholder="Enter Number" style="padding: 10px;">
+    <div><canvas id="barcode"></canvas></div>
+    <button onclick="barfunction()" style="font-size:20px; padding: 10px;">Generate</button>
+    <button name="Download" onclick="download()" style="font-size:25px; padding:5px; background-color:rgb(57, 16, 16); color:antiquewhite">Download</button>
+
+</body>
+
+<script>
+    function barfunction() {
+        var input = document.getElementById("bar").value;
+        var barcode = document.getElementById("barcode");
+        if (input == '') {
+            alert("Enter the data");
+            return false;
+        } else {
+            JsBarcode(barcode, input,{ format: "CODE128" });
+            barcode.style.display = "inline";
+        }
+    }
+
+    var image = new Image();
+
+    function download() {
+        var canvas = document.querySelector('#barcode');
+        var dataURL = canvas.toDataURL('image/png');
+        var link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'barcode.png';
+        link.click();
+    }
+
+</script>
+
+</html>

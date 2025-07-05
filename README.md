@@ -1,1 +1,3 @@
-Using : jQuery, Bootstrap
+# barcode-generator
+
+![Working](image.png)
